@@ -1,0 +1,12 @@
+{
+  "name": "mycontacts",
+  "version": "1.0.0",
+  "description": "api to store contacts",
+  "main": "src/index.js",
+  "repository": "git@github.com:vitor-laguardia/node-server-express.git",
+  "author": "vitor laguardia <vitor.laguardia@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.19.2"
+  }
+}

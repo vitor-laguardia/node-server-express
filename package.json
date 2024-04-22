@@ -6,6 +6,9 @@
   "repository": "git@github.com:vitor-laguardia/node-server-express.git",
   "author": "vitor laguardia <vitor.laguardia@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
   "devDependencies": {
     "nodemon": "^3.1.0"
   },

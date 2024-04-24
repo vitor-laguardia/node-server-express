@@ -11,7 +11,9 @@ const contacts = [
 ];
 class ContactsRepository {
   findAll() {
-    return new Promise((resolve, reject) => resolve(contacts));
+    return new Promise((resolve) => {
+      resolve(contacts);
+    });
   }
 }
 

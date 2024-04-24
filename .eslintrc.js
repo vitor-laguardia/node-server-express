@@ -8,5 +8,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 15,
   },
-  rules: {},
+  rules: {
+    'class-methods-use-this': 'off',
+  },
 };

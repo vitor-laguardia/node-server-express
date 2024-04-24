@@ -1,0 +1,13 @@
+{
+  "eslint.enable": true,
+  "eslint.debug": true,
+  "eslint.format.enable": true,
+  "eslint.problems.shortenToSingleLine": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true,
+    "javascript.preferences.quoteStyle": "single"
+  }
+}

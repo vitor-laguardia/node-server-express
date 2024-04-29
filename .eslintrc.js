@@ -13,5 +13,8 @@ module.exports = {
     'consistent-return': 'off',
     camelcase: 'off',
     'object-curly-newline': 'off',
+    'no-confusing-arrow': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'function-paren-newline': 'off',
   },
 };

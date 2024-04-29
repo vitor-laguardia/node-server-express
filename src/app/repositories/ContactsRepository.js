@@ -45,11 +45,10 @@ class ContactsRepository {
   }
 
   async create(name, phone, email, category_id) {
-    const row = await db.query(
+    const [row] = await db.query(
       'INSERT INTO contacts(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
       [name, email, phone, category_id],
     );
-    console.log(row);
     return row;
   }
 

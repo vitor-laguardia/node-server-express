@@ -21,15 +21,19 @@ class ContactController {
   async store(request, response) {
     const { name, phone, email, category_id } = request.body;
 
-    // we know exactly what properties do we have in request.body
-    const userAlreadyExists = await ContactsRepository.findByEmail(email);
-
-    if (userAlreadyExists) {
-      return response
-        .status(400)
-        .json({ error: 'This email is already been taken' });
+    if (!name) {
+      return response.status(400).json({ error: 'Name is required' });
     }
 
+    const contactExists = await ContactsRepository.findByEmail(email);
+
+    if (contactExists) {
+      return response
+        .status(400)
+        .json({ error: 'This email is already in use' });
+    }
+
+    // we know exactly what properties do we have in request.body
     const contact = await ContactsRepository.create(
       name,
       phone,
@@ -39,8 +43,37 @@ class ContactController {
     response.json(contact);
   }
 
-  update() {
-    // edit a register
+  async update(request, response) {
+    const { id } = request.params;
+    const { name, phone, email, category_id } = request.body;
+
+    const contactExists = await ContactsRepository.findByEmail(email);
+
+    if (!contactExists) {
+      return response.status(404).json({ error: 'User not found' });
+    }
+
+    if (!name) {
+      return response.status(400).json({ error: 'Name is required' });
+    }
+
+    const contactByEmail = await ContactsRepository.findByEmail(email);
+
+    if (contactByEmail && contactByEmail.id !== id) {
+      return response
+        .status(400)
+        .json({ error: 'This email is already in use' });
+    }
+
+    const contact = await ContactsRepository.update(
+      id,
+      name,
+      phone,
+      email,
+      category_id,
+    );
+
+    response.json(contact);
   }
 
   async delete(request, response) {

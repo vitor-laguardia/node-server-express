@@ -1,3 +1,4 @@
+const { request } = require('express');
 const { v4 } = require('uuid');
 
 let contacts = [
@@ -53,6 +54,22 @@ class ContactsRepository {
       };
       contacts.push(newClient);
       resolve(newClient);
+    });
+  }
+
+  update(id, name, phone, email, category_id) {
+    return new Promise((resolve) => {
+      const updatedContact = {
+        id,
+        name,
+        phone,
+        email,
+        category_id,
+      };
+      contacts = contacts.map((contact) =>
+        contact.id === id ? updatedContact : contact,
+      );
+      resolve(updatedContact);
     });
   }
 }

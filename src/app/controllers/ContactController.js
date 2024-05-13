@@ -54,8 +54,8 @@ class ContactController {
       return response.status(404).json({ error: 'User not found' });
     }
 
-    if (!name) {
-      return response.status(400).json({ error: 'Name is required' });
+    if (!email) {
+      return response.status(400).json({ error: 'Email is required' });
     }
 
     const contactByEmail = await ContactsRepository.findByEmail(email);

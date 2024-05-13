@@ -20,7 +20,12 @@ class CategoriesRepository {
     return row;
   }
 
-  delete() {}
+  async delete(id) {
+    const deleteOp = await db.query('DELETE FROM categories where id = $1', [
+      id,
+    ]);
+    return deleteOp;
+  }
 
   async create(name) {
     const [row] = await db.query(

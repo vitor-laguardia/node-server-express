@@ -48,7 +48,11 @@ class CategoryCotroller {
     response.json(updatedCategory);
   }
 
-  delete() {}
+  async delete(request, response) {
+    const { id } = request.params;
+    await CategoriesRepository.delete(id);
+    response.sendStatus(204);
+  }
 }
 
 module.exports = new CategoryCotroller();
